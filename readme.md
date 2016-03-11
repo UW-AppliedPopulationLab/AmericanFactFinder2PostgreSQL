@@ -68,9 +68,7 @@ The lookup table is saved here from make_meta_lookup.py.
 **src**  
 Where all the files from American FactFinder are saved.  The python scrips look here to run.
 
-**old**  
-Files that were used to test code or were used at one point and could be deleted.  Maybe useful for some references at some point.  
 
 ###Todo:
 - [ ] create a python script that runs all the python scripts in the correct order and runs through all the src folders not just one geography at a time.
-- [ ] create a script to make a csvt file with out having to write out each type.  This way the columns can be loaded as their correct types and not the defult sting.
+
