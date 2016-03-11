@@ -1,0 +1,5 @@
+config.txt
+config.py
+build/meta_lookup.js
+src/*/*.csv
+src/*/*.txt
