@@ -13,10 +13,10 @@ import string
 
 #path to the folder
 dir_path = os.path.dirname(os.path.realpath(__file__))
-dir_name =  dir_path + "/src/state"
+#dir_name =  dir_path + "/src/state"
 #dir_name =  dir_path + "/src/county"
 #dir_name =  dir_path + "/src/county_subdivision"
-#dir_name =  dir_path + "/src/census_tract"
+dir_name =  dir_path + "/src/census_tract"
 
 
 #function that finds all csv files in the given filename and  returns it
@@ -53,7 +53,7 @@ def prep_meatadata(filename):
             if "GEO" not in header[index]:
                 table_name = filename.split("_with")[0]
                 table_name = table_name.split("_")[-1]
-                header[index] = header[index] + "_" + table_name
+                header[index] = header[index] + "_" + table_name.split(".")[0]
 
         ##write updated header.
         writer.writerow(header)
@@ -67,7 +67,7 @@ def prep_meatadata(filename):
 
 
 for name in filenames:
-    if "ann" in name:
+    if "meta" not in name:
         # call function to open csv file and read in rows
         tempfile = NamedTemporaryFile(delete=False)
         full_path_csv = dir_name +"/"+ name

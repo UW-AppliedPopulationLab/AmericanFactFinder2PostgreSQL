@@ -28,7 +28,7 @@ def getSource(path_to_file):
         read_data = f.read()
         source = str(read_data)
         source = source.split("Source: ")[-1]
-        source = source.split("Explanation of Symbols:")[0]
+        source = source.split('\n')[0]
         return source.strip()
     f.closed
 
@@ -72,7 +72,7 @@ def readRows(csv_file_name, source_info):
             if "GEO" not in key:
                 #set variables for json object
                 code = key
-                description = prop
+                description = str(prop)
                 unit = unitType(prop)
                 shortDescription = prop
                 table = getTable(csv_file_name)
@@ -86,7 +86,7 @@ def readRows(csv_file_name, source_info):
                         '\t unit: "'  + unit + '", \n ' \
                         '\t data:"'  + source_info + '", \n ' \
                         '\t table: "'  + table + '", \n ' \
-                        '\t shortDescription: "'  + str(description) + '" \n }, \n '
+                        '\t shortDescription: "'  + description + '" \n }, \n '
                 #write it and close
                 f.write(string)
                 f.close();

@@ -16,10 +16,10 @@ import string
 #path to the folder
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-dir_name =  dir_path + "/src/state"
+#dir_name =  dir_path + "/src/state"
 #dir_name =  dir_path + "/src/county"
 #dir_name =  dir_path + "/src/county_subdivision"
-#dir_name =  dir_path + "/src/census_tract"
+dir_name =  dir_path + "/src/census_tract"
 
 
 
