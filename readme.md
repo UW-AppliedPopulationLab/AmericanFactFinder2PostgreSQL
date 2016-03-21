@@ -10,49 +10,49 @@ Files downloaded from American FactFinder are to be placed in src folder.  The s
 1. **Download** files from American FactFinder.
 
 	2. Uncheck  **"Include descriptive data element names"** option
-	
+
 	3. Select **"Data and annotations in a single file"** option
-	
-	
+
+
 	3. Download one geography at a time  
-	
-	
+
+
 2. Place the downloaded files in the src folder in the correct geography sub-folders  
 
-3. In the terminal cd to this directory 'FactFinder_to_DB'
+3. In the terminal cd to this directory 
 
 4. **Prepare the meta_data**
-	
-	5. In the terminal type $ `python bulk_prep_metadata.py -g`
+
+	5. In the terminal type $ `python bulk_prep_metadata.py -g`  
 		6. following the -g flag type in the geography option see table below
-	 
-	
-	
+
+
+
 5. **Prepare the data**
-	6. In an editor open  bulk_prep_data.py and change the dir_name to desired path. 
-	
-	6. In the terminal type $  `python bulk_prep_data.py -g `
+	6. In an editor open  bulk_prep_data.py and change the dir_name to desired path.
+
+	6. In the terminal type $  `python bulk_prep_data.py -g `    
 		6. following the -g flag type in the geography option see table below
-	
+
 5. **Create the code lookup**
 
-	6. In an editor open  make_meta_lookup.py and change the dir_name to desired path.  
-	
-	6. In the terminal type $  `python make_meta_lookup.py -g`
+	6. In an editor open  make_meta_lookup.py and change the dir_name to desired path.   
+
+	6. In the terminal type $  `python make_meta_lookup.py -g`  
 			6. following the -g flag type in the geography option see table below
 
 5. **Upload the data and metadata to the database**
 
 	6. In a editor open csv_to_db.py and change the dir_name to desired path /the geography you would like to run
-	
+
 	7. Hostname, username, DBname will all need to be updated to run
-	
+
 	7. In the terminal type $ `python csv_to_db.py -g`
 		6. following the -g flag type in the geography option see table below
-	
+
 8. copy out buld/meta_lookup.js to a permeant location
 
-###Option 
+###Option
 Options to use with the -g flag.  They specify which geography / folder to run
 
 | Option | geography | source |  
@@ -88,4 +88,3 @@ Where all the files from American FactFinder are saved.  The python scrips look 
 
 ###Todo:
 - [ ] create a python script that runs all the python scripts in the correct order and runs through all the src folders not just one geography at a time.
-
