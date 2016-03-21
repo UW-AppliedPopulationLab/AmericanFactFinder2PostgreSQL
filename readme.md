@@ -22,20 +22,24 @@ Files downloaded from American FactFinder are to be placed in src folder.  The s
 3. In the terminal cd to this directory 'FactFinder_to_DB'
 
 4. **Prepare the meta_data**
-	6. In an editor open  bulk_prep_metadata.py and change the dir_name to desired path. Example: `dir_name =  dir_path + "/src/county"`
 	
-	5. In the terminal type $ `python bulk_prep_metadata.py`
+	5. In the terminal type $ `python bulk_prep_metadata.py -g`
+		6. following the -g flag type in the geography option see table below
+	 
+	
 	
 5. **Prepare the data**
 	6. In an editor open  bulk_prep_data.py and change the dir_name to desired path. 
 	
-	6. In the terminal type $  `python bulk_prep_data.py`
+	6. In the terminal type $  `python bulk_prep_data.py -g `
+		6. following the -g flag type in the geography option see table below
 	
 5. **Create the code lookup**
 
 	6. In an editor open  make_meta_lookup.py and change the dir_name to desired path.  
 	
-	6. In the terminal type $  `python make_meta_lookup.py`
+	6. In the terminal type $  `python make_meta_lookup.py -g`
+			6. following the -g flag type in the geography option see table below
 
 5. **Upload the data and metadata to the database**
 
@@ -43,9 +47,22 @@ Files downloaded from American FactFinder are to be placed in src folder.  The s
 	
 	7. Hostname, username, DBname will all need to be updated to run
 	
-	7. In the terminal type $ `python csv_to_db.py`
+	7. In the terminal type $ `python csv_to_db.py -g`
+		6. following the -g flag type in the geography option see table below
 	
 8. copy out buld/meta_lookup.js to a permeant location
+
+###Option 
+Options to use with the -g flag.  They specify which geography / folder to run
+
+| Option | geography | source |  
+|---|---|---|
+| s | state |/src/state |
+| c | county |/src/county |
+| cs | county subdivision |/src/county_subdivision |
+| ct | census tract|/src/census_tract |
+| bg | census block group|/src/block_group |
+
 
 ###Files
 

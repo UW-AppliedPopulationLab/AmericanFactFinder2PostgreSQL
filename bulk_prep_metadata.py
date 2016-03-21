@@ -8,11 +8,53 @@ from os import path
 from os import listdir
 import string
 
+import sys
+import getopt
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
+geog = None
+dir_name = None
+
+options, remainder = getopt.getopt(sys.argv[1:], 'g:v', ['geog='])
+
+for opt, arg in options:
+    if opt in ('-geog'):
+        geog = arg
+        print geog
+
+if geog:
+    print 'Geog   :', geog
+
+if geog == 's':
+    dir_name =  dir_path + "/src/state"
+elif geog == 'c':
+    dir_name =  dir_path + "/src/county"
+elif geog == 'cs':
+    dir_name =  dir_path + "/src/county_subdivision"
+elif geog == 'ct':
+    dir_name =  dir_path + "/src/census_tract"
+elif geog == 'bg':
+    dir_name =  dir_path + "/src/block_group"
+else:
+    print "please specify which type of geography you would like to run \n" \
+    "Use -g then the geogtype as an option \n\n" \
+    "s  : runs state\n" \
+    "c  : runs county\n"\
+    "cs  : runs county subdivison\n"\
+    "ct  : runs census tract\n"\
+    "bg  : runs census block group\n\n"\
+    "EXAMPLE:\n"\
+    "python make_meta_lookup.py -g s\n"
+    sys.exit(0)
+
+print dir_name
+
 #CHANGE THESE
 
 #path to the folder
-dir_path = os.path.dirname(os.path.realpath(__file__))
-dir_name =  dir_path + "/src/state"
+#dir_path = os.path.dirname(os.path.realpath(__file__))
+#dir_name =  dir_path + "/src/state"
 #dir_name =  dir_path + "/src/county"
 #dir_name =  dir_path + "/src/county_subdivision"
 #dir_name =  dir_path + "/src/census_tract"

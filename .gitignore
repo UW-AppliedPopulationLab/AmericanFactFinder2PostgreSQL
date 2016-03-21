@@ -6,3 +6,4 @@ config.pyc
 build/meta_lookup.js
 src/*/*.csv
 src/*/*.txt
+test.py
