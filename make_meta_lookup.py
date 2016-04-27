@@ -68,7 +68,7 @@ def find_csv_filenames( path_to_dir, suffix=".csv" ):
 filenames = find_csv_filenames(dir_name)
 
 def getSource(path_to_file):
-    with open(path_to_file, 'r') as f:
+    with open(path_to_file, 'rU') as f:
         read_data = f.read()
         source = str(read_data)
         source = source.split("Source: ")[-1]
@@ -102,7 +102,7 @@ def getTable(filename):
 
 #Opens the csv and reads the rows out
 def readRows(csv_file_name, source_info):
-    with open(csv_file_name) as csvfile:
+    with open(csv_file_name, 'rU') as csvfile:
         reader = csv.DictReader(csvfile)
         # add table name to append to code
         tablename_col = csv_file_name.split("_meta")[0]
