@@ -39,6 +39,8 @@ elif geog == 'ct':
     dir_name =  dir_path + "/src/census_tract"
 elif geog == 'bg':
     dir_name =  dir_path + "/src/block_group"
+elif geog == 'p':
+    dir_name =  dir_path + "/src/places"
 else:
     print "please specify which type of geography you would like to run \n" \
     "Use -g then the geogtype as an option \n\n" \
@@ -47,6 +49,7 @@ else:
     "cs  : runs county subdivison\n"\
     "ct  : runs census tract\n"\
     "bg  : runs census block group\n\n"\
+    "p  : runs places\n\n"\
     "EXAMPLE:\n"\
     "python make_meta_lookup.py -g s\n"
     sys.exit(0)

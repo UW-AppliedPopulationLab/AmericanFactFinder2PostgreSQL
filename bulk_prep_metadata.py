@@ -46,6 +46,7 @@ else:
     "cs  : runs county subdivison\n"\
     "ct  : runs census tract\n"\
     "bg  : runs census block group\n\n"\
+    "p  : runs places\n\n"\
     "EXAMPLE:\n"\
     "python make_meta_lookup.py -g s\n"
     sys.exit(0)
