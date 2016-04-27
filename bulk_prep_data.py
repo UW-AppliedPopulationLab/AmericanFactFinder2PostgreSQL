@@ -36,6 +36,8 @@ elif geog == 'ct':
     dir_name =  dir_path + "/src/census_tract"
 elif geog == 'bg':
     dir_name =  dir_path + "/src/block_group"
+elif geog == 'p':
+    dir_name =  dir_path + "/src/places"
 else:
     print "please specify which type of geography you would like to run \n" \
     "Use -g then the geogtype as an option \n\n" \
