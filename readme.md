@@ -62,6 +62,7 @@ Options to use with the -g flag.  They specify which geography / folder to run
 | cs | county subdivision |/src/county_subdivision |
 | ct | census tract|/src/census_tract |
 | bg | census block group|/src/block_group |
+| p | places |/src/places |
 
 
 ###Files
