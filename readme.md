@@ -9,24 +9,22 @@ Files downloaded from American FactFinder are to be placed in src folder.  The s
 
 1. **Download** files from American FactFinder.
 
-	2. Uncheck  **"Include descriptive data element names"** option
+	1. Uncheck  **"Include descriptive data element names"** option
 
-	3. Select **"Data and annotations in a single file"** option
+	2. Select **"Data and annotations in a single file"** option
 
 	3. Download one geography at a time  
 
 
 2. Place the downloaded files in the src folder in the correct geography sub-folders  
 
-3. In the terminal cd to this directory 
+3. **Config** Create a "config.py" file with your database information. For an example, see example_config.py
 
-4. **Config** Create a "config.py" file with your database information. For an example, see example_config.py
+4. **Edit Master Script** By default, the system will look for files in the following folders: census_tract, county, county_subdivision, places, and state. You can change this by editing the "dir_opts" variable directly.
 
-5. **Edit Master Script** By default, the system will look for files in the following folders: census_tract, county, county_subdivision, places, and state. You can change this by editing the "dir_opts" variable directly.
+5. Run master_script.py from a shell
 
-6. Run master_script.py from a shell
-
-7. Copy out build/meta_lookup.js to a permenant location
+6. Copy out build/meta_lookup.js to a permenant location
 
 
 ### Files
@@ -44,6 +42,7 @@ Creates build/meta_lookup.js file.  An object for each column with its table, so
 Finds all the csv files in the folder it is currently pointing at and uploads them to the database, appending the geography type to the table name to create the database name.
 
 **master_script.py**
+
 A grouping script that will run the above files 
 
 ### Folders
