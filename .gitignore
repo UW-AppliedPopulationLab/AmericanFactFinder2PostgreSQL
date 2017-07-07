@@ -2,8 +2,10 @@ config.txt
 config.py
 config.*
 config.pyc
+*.pyc
 
 build/meta_lookup.js
 src/*/*.csv
 src/*/*.txt
 test.py
+src.zip

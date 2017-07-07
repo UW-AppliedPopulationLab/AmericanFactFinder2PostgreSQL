@@ -1,76 +1,9 @@
 #preps the metadata for import to DB
 #it adds the table name to end of the code to match the db
-
 from tempfile import NamedTemporaryFile
 import shutil
 import csv
-import os
-from os import path
-from os import listdir
 import string
-import sys
-import getopt
-
-dir_path = os.path.dirname(os.path.realpath(__file__))
-
-geog = None
-dir_name = None
-
-options, remainder = getopt.getopt(sys.argv[1:], 'g:v', ['geog='])
-
-for opt, arg in options:
-    if opt in ('-geog'):
-        geog = arg
-        print geog
-
-if geog:
-    print 'Geog   :', geog
-
-if geog == 's':
-    dir_name =  dir_path + "/src/state"
-elif geog == 'c':
-    dir_name =  dir_path + "/src/county"
-elif geog == 'cs':
-    dir_name =  dir_path + "/src/county_subdivision"
-elif geog == 'ct':
-    dir_name =  dir_path + "/src/census_tract"
-elif geog == 'bg':
-    dir_name =  dir_path + "/src/block_group"
-elif geog == 'p':
-    dir_name =  dir_path + "/src/places"
-else:
-    print "please specify which type of geography you would like to run \n" \
-    "Use -g then the geogtype as an option \n\n" \
-    "s  : runs state\n" \
-    "c  : runs county\n"\
-    "cs  : runs county subdivison\n"\
-    "ct  : runs census tract\n"\
-    "bg  : runs census block group\n\n"\
-    "p  : runs places\n\n"\
-    "EXAMPLE:\n"\
-    "python make_meta_lookup.py -g s\n"
-    sys.exit(0)
-
-print dir_name
-#CHANGE THESE
-
-#path to the folder
-#dir_path = os.path.dirname(os.path.realpath(__file__))
-#dir_name =  dir_path + "/src/state"
-#dir_name =  dir_path + "/src/county"
-#dir_name =  dir_path + "/src/county_subdivision"
-#dir_name =  dir_path + "/src/census_tract"
-
-
-#function that finds all csv files in the given filename and  returns it
-def find_csv_filenames( path_to_dir, suffix=".csv" ):
-    filenames = listdir(path_to_dir)
-    return [ filename for filename in filenames if filename.endswith( suffix ) ]
-
-
-filenames = find_csv_filenames(dir_name)
-
-#translate_tbl = string.maketrans('', '',)
 
 ##This script reads a csv header, replaces and periods or dashes in header titles
 ##with nothing, and then re-writes the whole file out with the updated header.
@@ -78,7 +11,7 @@ filenames = find_csv_filenames(dir_name)
 ##It reads the file, writes a temporary file with the data, and then replaces
 ##the original file with the edited temporary file
 
-def prep_meatadata(filename):
+def prep_data(filename):
     translate_tbl = string.maketrans('.-', '__',)
     tempfile = NamedTemporaryFile(delete=False)
 
@@ -106,20 +39,14 @@ def prep_meatadata(filename):
             writer.writerow(row)
 
     shutil.move(tempfile.name, filename)
-    print filename.split("/")[-1] + " Done"
 
+#############################################################
+#############################################################
 
-for name in filenames:
-    if "meta" not in name:
-        # call function to open csv file and read in rows
-        tempfile = NamedTemporaryFile(delete=False)
-        full_path_csv = dir_name +"/"+ name
-        prep_meatadata(full_path_csv)
+def data_loop(dir_name, filenames):
+    for name in filenames:
+        if "meta" not in name:
+            # call function to open csv file and read in rows
+            prep_data(name)
 
-
-##replace original file with temp file
-
-#filename = 'test/census_county_test/ACS_14_5YR_S1601_metadata.csv'
-
-#shutil.move(tempfile.name, filename)
-print "Done and Over!"
+    print "Data prepared!"
