@@ -14,8 +14,8 @@ source_loc = location+"src"
 
 ##Get list of subfolders in src.
 dirs = [d for d in os.listdir(source_loc) if os.path.isdir(os.path.join(source_loc, d))]
-##Default option: run process for all folders (minus block group). Eventually will be changeable to just select a few!
-dir_opts = ['county', 'county_subdivision', 'places', 'state']
+##Default option: run process for all folders (minus block group).
+dir_opts = ['census_tract', 'county', 'county_subdivision', 'places', 'state']
 
 meta_count = 0
 
